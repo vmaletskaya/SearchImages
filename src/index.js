@@ -48,7 +48,7 @@ async function getImages(query) {
     .then(data => {
       if (data.totalHits !== 0) {
         console.log(data);
-        Notiflix.Notify.success(`Hooray! We found ${data.total} images.`);
+        Notiflix.Notify.success(`Hooray! We found ${data.totalHits} images.`);
       } else if (pixabayApi.page === data.totalHits) {
         Notiflix.Notify.info(
           `We're sorry, but you've reached the end of search results.`
@@ -58,8 +58,8 @@ async function getImages(query) {
         Notiflix.Notify.info(
           `Sorry! We can't find any images. at your request. Please try again`
         );
-        clearAll();
-        return;
+        // clearAll();
+        // return;
       }
 
       return data.hits;
