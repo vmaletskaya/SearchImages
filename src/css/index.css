@@ -1,0 +1,264 @@
+* {
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+p,
+b {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', 'Open Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2a2a2a;
+  line-height: 1.5;
+  background-color: #fff1dc;
+  padding: 10px 20px 10px 20px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.search-form {
+  display: flex;
+  gap: 20px;
+  position: relative;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.query-input {
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1;
+  font: inherit;
+  padding: 7px 20px;
+
+  width: 88vw;
+
+  border-radius: 4px;
+  outline: none;
+  position: relative;
+
+  border: 0 solid #e2e8f0;
+}
+
+.query-input::placeholder {
+  font-weight: 400;
+  font-size: small;
+  color: #676666;
+  align-self: center;
+  text-transform: uppercase;
+}
+
+.query-input:focus {
+  outline: 1px solid #ccc;
+}
+
+.search-btn {
+  background-color: #4caf50;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-btn:hover {
+  background-color: #3e8e41;
+}
+
+button {
+  display: block;
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 1;
+
+  text-align: center;
+  color: #0d172a;
+
+  transition: color 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+
+  user-select: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #6d6d6d5d;
+  color: #fff;
+}
+
+.load-more {
+  border: 1px solid #ccc;
+  background-color: #fff;
+  border: 0 solid #e2e8f0;
+  border-radius: 4px;
+  padding: 12px 24px;
+  display: none;
+}
+
+.lds-dual-ring {
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  opacity: 0;
+
+  transition: opacity 500ms linear;
+
+  border-radius: 50%;
+  border: 2px solid #fff;
+  border-color: #828282 transparent #828282 transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+
+  position: absolute;
+  z-index: 10;
+  right: 10px;
+  background-color: transparent;
+  top: 5px;
+}
+
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.gallery {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.photo-card {
+  display: block;
+  position: relative;
+  padding: 0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.photo-card > img {
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+}
+
+
+.info {
+  transition: all 400ms ease-in;
+  position: absolute;
+  opacity: 1;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 1);
+  backdrop-filter: blur(1px);
+  color: #2a2a2a;
+  font-size: 12px;
+  pointer-events: none;
+}
+
+.info-item {
+  display: grid;
+  justify-items: start;
+  grid-template-columns: 1fr;
+  grid-template-rows: 14px 14px;
+  padding-left: 8px;
+  gap: 4px;
+}
+
+@media screen and (min-width: 768px) {
+  .gallery {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+  }
+
+  .photo-card > img {
+    height: 218px;
+  }
+
+  .info {
+    font-size: 16px;
+  }
+
+  .info-item {
+    grid-template-rows: 20px 20px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .gallery {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+  }
+
+  .photo-card > img {
+    height: 318px;
+  }
+
+  .query-input {
+    width: calc(100vw / 2);
+  }
+}
+
+/* SimpleLightboxx */
+
+.sl-wrapper {
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(3px);
+  backdrop-filter: brightness(50%);
+  outline: none;
+  border: none;
+}
+
+.sl-close,
+.sl-next,
+.sl-prev,
+.sl-counter {
+  color: white;
+  background-color: transparent;
+}
+
+.sl-close {
+  border-radius: 50%;
+}
+
+.sl-caption {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
+}
+
+.sl-counter {
+  top: 24px;
+  right: 73px;
+}
+
+.sl-image {
+  box-shadow: rgb(141 141 141 / 20%) 0px 1px 60px,
+    rgb(0 0 0 / 12%) 0px -12px 30px, rgb(102 102 102 / 12%) 0px 4px 6px,
+    rgb(0 0 0 / 17%) 0px 12px 13px, rgb(0 0 0 / 9%) 0px -3px 5px;
+}
