@@ -22,6 +22,7 @@ const refs = {
 };
 
 const inputEl = refs.form.elements[0];
+let imageCounter = 0;
 
 refs.form.addEventListener('submit', e => {
   e.preventDefault();
@@ -109,15 +110,23 @@ function updateSimpleLightBox() {
   gallery.refresh();
 }
 
+
 function loadMoreImages(query) {
   refs.loadMoreBtn.addEventListener('click', () => {
     pixabayApi.page += 1;
     pixabayApi.fetch(query).then(data => {
-      console.log(data);  
+      imageCounter += data.hits.length;
       refs.gallery.insertAdjacentHTML(
         'beforeEnd',
         data.hits.map(createMarkup).join('')
       );
+      addSimpleLightBox().refresh();
+      if (imageCounter === data.totalHits) {
+        Notiflix.Notify.info(
+          `We're sorry, but you've reached the end of search results.`
+        );
+        refs.loadMoreBtn.style.display = 'none';
+      }
     });
   });
 }
